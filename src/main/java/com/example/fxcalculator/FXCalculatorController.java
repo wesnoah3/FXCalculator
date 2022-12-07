@@ -144,15 +144,15 @@ public class FXCalculatorController {
             switch (operation) {
                 case 1:
                     Float answer = num + secondNum;
-                    textBox.setText(String.valueOf(answer));
+                    textBox.setText(textBox.getText() + "=" + String.valueOf(answer));
                     break;
                 case 2:
                     answer = num - secondNum;
-                    textBox.setText(String.valueOf(answer));
+                    textBox.setText(textBox.getText() + "=" + String.valueOf(answer));
                     break;
                 case 3:
                     answer = num * secondNum;
-                    textBox.setText(String.valueOf(answer));
+                    textBox.setText(textBox.getText() + "=" + String.valueOf(answer));
                     break;
                 case 4:
                     answer = 0f;
@@ -162,7 +162,7 @@ public class FXCalculatorController {
                     catch (Exception e){
                         textBox.setText("Error");
                     }
-                    textBox.setText(String.valueOf(answer));
+                    textBox.setText(textBox.getText() + "=" + String.valueOf(answer));
                     break;
             }
         }
