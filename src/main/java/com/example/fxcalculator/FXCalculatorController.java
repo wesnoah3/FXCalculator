@@ -12,6 +12,7 @@ public class FXCalculatorController {
     Float num = 0f;
     int operation = -1;
     boolean firstRun = true;
+    boolean mathDone = false;
 
     @FXML
     private Button sub;
@@ -73,6 +74,10 @@ public class FXCalculatorController {
             textBox.setText("");
             firstRun = false;
         }
+        if (mathDone) {
+            textBox.setText("");
+            mathDone = false;
+        }
         if (event.getSource() == one) {
             textBox.setText(textBox.getText() + "1");
         }
@@ -121,6 +126,7 @@ public class FXCalculatorController {
             textBox.setText(textBox.getText() + "/");
         }
         else if (event.getSource() == equals) {
+            mathDone = true;
             String secondNumStr = "";
             if (textBox.getText().contains("+")) {
                 secondNumStr = textBox.getText().substring(textBox.getText().indexOf("+") + 1);
