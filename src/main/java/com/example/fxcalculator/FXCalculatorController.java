@@ -103,42 +103,55 @@ public class FXCalculatorController {
         else if (event.getSource() == add) {
             num = Float.parseFloat(textBox.getText());
             operation = 1; //Add
-            textBox.setText("");
+            textBox.setText(textBox.getText() + "+");
         }
         else if (event.getSource() == sub) {
             num = Float.parseFloat(textBox.getText());
-            operation = 2; //Sub
-            textBox.setText("");
+            operation = 2; //Subtract
+            textBox.setText(textBox.getText() + "-");
         }
         else if (event.getSource() == multi) {
             num = Float.parseFloat(textBox.getText());
-            operation = 3; //Add
-            textBox.setText("");
+            operation = 3; //Multiply
+            textBox.setText(textBox.getText() + "*");
         }
         else if (event.getSource() == div) {
             num = Float.parseFloat(textBox.getText());
-            operation = 4; //Add
-            textBox.setText("");
+            operation = 4; //Divide
+            textBox.setText(textBox.getText() + "/");
         }
         else if (event.getSource() == equals) {
-            Float secondOperator = Float.parseFloat(textBox.getText());
+            String secondNumStr = "";
+            if (textBox.getText().contains("+")) {
+                secondNumStr = textBox.getText().substring(textBox.getText().indexOf("+") + 1);
+            }
+            else if (textBox.getText().contains("-")) {
+                secondNumStr = textBox.getText().substring(textBox.getText().indexOf("-") + 1);
+            }
+            else if (textBox.getText().contains("*")) {
+                secondNumStr = textBox.getText().substring(textBox.getText().indexOf("*") + 1);
+            }
+            else if (textBox.getText().contains("/")) {
+                secondNumStr = textBox.getText().substring(textBox.getText().indexOf("/") + 1);
+            }
+            Float secondNum = Float.parseFloat(secondNumStr);
             switch (operation) {
                 case 1:
-                    Float answer = num + secondOperator;
+                    Float answer = num + secondNum;
                     textBox.setText(String.valueOf(answer));
                     break;
                 case 2:
-                    answer = num - secondOperator;
+                    answer = num - secondNum;
                     textBox.setText(String.valueOf(answer));
                     break;
                 case 3:
-                    answer = num * secondOperator;
+                    answer = num * secondNum;
                     textBox.setText(String.valueOf(answer));
                     break;
                 case 4:
                     answer = 0f;
                     try {
-                        answer = num / secondOperator;
+                        answer = num / secondNum;
                     }
                     catch (Exception e){
                         textBox.setText("Error");
